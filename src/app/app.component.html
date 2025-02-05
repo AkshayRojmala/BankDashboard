@@ -11,7 +11,6 @@
       </div>
     </div>
   
-    <!-- Filters Section -->
    <!-- Filters Section -->
    <div class="filters">
     <button class="filter-btn" (click)="onFilterClick('12 months')">12 months</button>
@@ -20,6 +19,24 @@
     <button class="filter-btn" (click)="onFilterClick('24 hours')">24 hours</button>
   </div>
 
+  
+  <div class="account-section">
+    <div class="account-card">
+      <canvas id="primaryAccountChart" width="200" height="200"></canvas>  
+      <h3>Primary Account</h3>
+      <p>Current Balance</p>
+      <h2>$40,206.20</h2>
+      <span class="positive">▲ 3.4%</span>
+    </div>
+  
+    <div class="account-card">
+      <canvas id="secondaryAccountChart" width="200" height="200"></canvas>  
+      <h3>Secondary Account</h3>
+      <p>Current Balance</p>
+      <h2>$6,421.10</h2>
+      <span class="positive">▲ 2.0%</span>
+    </div>
+  </div>
   <!-- Balance Over Time Chart -->
   <div class="chart-card">
     <h3>Balance Over Time</h3>
@@ -27,30 +44,11 @@
   </div>
       
   
-    <!-- Accounts Overview -->
-    <div class="account-section">
-      <div class="account-card chart-container">
-        <canvas id="primaryAccountChart"></canvas>
-        <h3>Primary account</h3>
-        <p>Current balance</p>
-        <h2>$40,206.20</h2>
-        <span class="positive">▲ 3.4%</span>
-      </div>
-      <div class="account-card chart-container">
-        <canvas id="secondaryAccountChart"></canvas>
-        <h3>Secondary account</h3>
-        <p>Current balance</p>
-        <h2>$6,421.10</h2>
-        <span class="positive">▲ 2.0%</span>
-      </div>
-    </div>
+  
   
     <!-- Balance Over Time & Recent Deposits -->
     <div class="charts">
-      <div class="chart-card chart-container">
-        <h3>Balance over time</h3>
-        <canvas id=""></canvas>
-      </div>
+       
       <div class="chart-card">
         <h3>Recent deposits</h3>
         <ul class="deposit-list">

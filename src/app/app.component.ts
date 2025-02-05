@@ -1,14 +1,19 @@
 import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
 import Chart from 'chart.js/auto';
 
 @Component({
   selector: 'app-root',
+  standalone: true,
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent implements AfterViewInit {
   @ViewChild('balanceChartCanvas') balanceChartCanvas!: ElementRef<HTMLCanvasElement>;
   balanceChart: any;
+  primaryChart: any;
+  secondaryChart: any;
+  secondaryAccountChart: any;
 
   chartOptions = {
     responsive: true,
@@ -27,9 +32,12 @@ export class AppComponent implements AfterViewInit {
       }
     }
   };
+  primaryAccountChart: any;
 
   ngAfterViewInit() {
     this.initializeChart('12 months'); // Default Chart
+    this.initializePrimaryChart();     // Primary account chart
+    this.initializeSecondaryChart();   // Secondary account chart
   }
 
   initializeChart(filter: string) {
@@ -98,4 +106,44 @@ export class AppComponent implements AfterViewInit {
   onFilterClick(filter: string) {
     this.initializeChart(filter);
   }
+  initializePrimaryChart() {
+    new Chart("primaryAccountChart", {
+      type: 'doughnut',
+      data: {
+        labels: ["Spent", "Remaining"],
+        datasets: [{ 
+          data: [70, 30], 
+          backgroundColor: ["#6a5acd", "#ddd"] 
+        }]
+      },
+      options: {
+        responsive: false,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false }
+        }
+      }
+    });
+  }
+
+  initializeSecondaryChart() {
+    new Chart("secondaryAccountChart", {
+      type: 'doughnut',
+      data: {
+        labels: ["Spent", "Remaining"],
+        datasets: [{ 
+          data: [50, 50], 
+          backgroundColor: ["#333", "#ddd"] 
+        }]
+      },
+      options: {
+        responsive: false,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false }
+        }
+      }
+    });
+  }
+
 }
